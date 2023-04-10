@@ -1,0 +1,17 @@
+[
+    {
+        "name":"Sohana",
+        "phone":11111111111111,
+         "country":"china"
+    },
+    {
+        "name":"Komal",
+        "phone":222222222,
+        "country":"india"
+    },
+    {
+        "name":"Rohana",
+        "phone":33333333,
+        "country":"canada"
+    }
+]
