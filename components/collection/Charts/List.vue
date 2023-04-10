@@ -6,9 +6,9 @@
             <img :src="'https://www.countryflags.com/wp-content/uploads/' + person.country + '-flag-png-large.png'"   alt="" class="h-20 m-6">
             <h2 class="text-center px-2 pb-5">{{person.name}}</h2>  
             <p class="text-center px-2 pb-5">{{person.phone}}</p>  
-            <div class="px-6 pt-4 pb-2">
-                <button class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" @click="deleteContact(person)">Delete</button>
-              </div>
+    <!-- Delete functionality start -->
+              <CollectionChartsDelete @delete="deleteContact(person)"/>
+               <!-- Delete functionality end -->
         </div>
     </div>
      <!-- showing the person list ends here -->

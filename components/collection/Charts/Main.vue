@@ -46,7 +46,7 @@
 //importing the HeroIcon  and json data
 import { PlusIcon } from "@heroicons/vue/24/outline"
 import PersonList from  "../../../json/data.json"
-
+//Declaring the personlist,isContact and searchQuery
 const personlist=ref(PersonList)
 const isContact=ref(false)
 const searchQuery = ref("");
@@ -57,13 +57,10 @@ const openContact=()=>{
 //Adding the existing data in localstorage
 onMounted(() => {
 const contactData = localStorage.getItem('contact')
-console.log('contactdata',contactData,PersonList)
+
   if (contactData) {
-   
     personlist.value = JSON.parse(contactData)
-    
   } else {
-  
     localStorage.setItem('contact', JSON.stringify(personlist.value))
   }
 })
@@ -71,23 +68,22 @@ console.log('contactdata',contactData,PersonList)
 const saveCountry=(addContactForm)=>{
     console.log("addContactForm",addContactForm)
     personlist.value.push(addContactForm)
-    // localStorage.setItem('contact',JSON.stringify(personlist))
     const storedContacts = JSON.parse(localStorage.getItem('contact'));
-    // console.log("storedContactssssssss",storedContacts)
   storedContacts.push(addContactForm);
   localStorage.setItem('contact', JSON.stringify(storedContacts));
 
 }
 
-//Deleting the contact data
+//Deleting the contact data from localstorage
 
 const deleteContactListener=(person)=>{
     if(confirm('Are you sure to delete this record?')){
-        let persondata = JSON.parse(localStorage.getItem('contact'));
     let personIndex=personlist.value.findIndex(item => item.name === person.name)
     if(personIndex!==-1){
-        persondata.splice(personIndex,1)
-        localStorage.setItem('contact', JSON.stringify(persondata));
+        personlist.value.splice(personIndex,1)
+        const deletedContacts = JSON.parse(localStorage.getItem('contact'));
+        deletedContacts.splice(personIndex,1)
+        localStorage.setItem('contact', JSON.stringify(deletedContacts));
     }
 }
 }
